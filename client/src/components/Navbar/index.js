@@ -17,21 +17,24 @@ const Navbar = ({ updateLocal }) =>{
     return (
         <>
         <nav className="full-width nav-columns fit">
-        <Link to="/profile">
+        { Auth.loggedIn() &&
+        (<Link to="/profile">
             <button className="btn"><IoIosBody/><FormattedMessage id="profile"/></button>
-        </Link>
+        </Link>)}
         <Link to="/find-service">
         <button className="btn"><IoIosSearch/><FormattedMessage id="findService"/></button>
         </Link>
-        <Link to="/offer-service">
+        { Auth.loggedIn() &&
+        (<Link to="/offer-service">
         <button className="btn"><IoMdConstruct/><FormattedMessage id="offerService"/></button>
-        </Link>
+        </Link>)}
         {/* <button className="btn"><IoMdGlobe/>Language</button> */}
         <select  type="text" className="btn select" name="language" onChange={handleLanguageChange}>
             <option>English</option>
             <option>Spanish</option>
         </select>
-        <button onClick={Auth.logout}className="btn"><IoMdLogOut/><FormattedMessage id="logout"/></button>
+        { Auth.loggedIn() &&
+        (<button onClick={Auth.logout}className="btn"><IoMdLogOut/><FormattedMessage id="logout"/></button>)}
         </nav>
         </>
     )
