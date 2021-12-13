@@ -12,7 +12,7 @@ import { IoIosAddCircleOutline } from "react-icons/io";
 import { FormattedMessage } from 'react-intl';
 
 const OfferService = () =>{
-    const { loading, data:userData } = useQuery(QUERY_ME, {
+    const { loading, data:userData, refetch } = useQuery(QUERY_ME, {
         fetchPolicy: "no-cache"
     });
     const user= loading?null:userData.me;
@@ -54,7 +54,7 @@ const OfferService = () =>{
                     user: Auth.getUser()
                 },
             });
-            history.go(0);
+            refetch();
         } 
         catch (err) {
             
@@ -71,7 +71,7 @@ const OfferService = () =>{
                 user: Auth.getUser()
             }
         })
-        history.go(0);
+        refetch();
     }
 
     // this code pertains to the images
@@ -183,6 +183,7 @@ const OfferService = () =>{
                         <option>Personal Training</option>
                         <option>Pet Walking</option>
                         <option>Photography</option>
+                        <option>Remote</option>
                         <option>Translations</option>
                         <option>Tutoring</option>
                         <option>Web Design</option>                    
