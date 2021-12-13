@@ -23,7 +23,7 @@ const OfferService = () =>{
     const [formState, setFormState] = useState({ 
         name: '', 
         description: '', 
-        type: '',
+        type: 'Remote',
         email: '', 
         location: '', 
         hourly_rate: '', 
